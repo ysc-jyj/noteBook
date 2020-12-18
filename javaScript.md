@@ -3,29 +3,28 @@
 
 ### 样式
 
-> 内部
->
-> ```html
-> <script>
->     alter("helloworld")
-> </script>
-> ```
->
->外部引入
->
->a.js
->
->```javascript
->alter("helloworld")
->```
->
->test.html
->
->```html
-><script src="a.js"></script>
->```
->
->
+ 内部
+
+ ```html
+ <script>
+     alter("helloworld")
+ </script>
+ ```
+
+外部引入
+
+a.js
+
+```javascript
+alter("helloworld")
+```
+
+test.html
+
+```html
+<script src="a.js"></script>
+```
+
 
 ###数据类型
 
@@ -537,7 +536,65 @@ DOM可以将任何HTML或XML文档描绘成一个有多节点构成的结构。
 
 文档元素是文档的最外层元素，文档中的其他元素都包含在文档元素中；每个文档只能有一个文档元素。
 
-**Node类型**
+##### Node类型
 
+JavaScript中的所有节点类型都继承自Node类型——>所有节点类型都共享着相同的基本属性和方法。
 
+每个节点都有一个nodeTypt属性，用于表示节点类型（12个数值常量表示）。
+
+<!--节点类型：-->
+
+<!--NODE.ELEMENT_NODE(1)-->
+
+<!--NODE.ATTRIBUTE_NODE(2)-->
+
+<!--NODE.TEXT.NODE(3)-->
+
+<!--NODE.CDATA_SECTION_NODE(4)-->
+
+<!--NODE.ENTITY_REFERENCE_NODE(5)-->
+
+<!--NODE.ENTITY_NODE(6)-->
+
+<!--Node.PROCESSING_INSTRUCTION_NODE(7)-->		
+
+<!--Node.COMMENT_NODE(8)-->
+
+<!--Node.DOCUMENT_NODE(9)-->
+
+<!--Node.DOCUMENT_TYPE_NODE(10)-->
+
+<!--Node.DOCUMENT_FRAGMENT_NODE(11)-->
+
+<!--Node.NOTATION_NODE(12)--> 
+
+1. nodeName和nodeValue属性
+
+   这两个属性取决于节点的类型
+
+   ```javascript
+   if(someNode.nodeType==1){
+   	value=someNode.nodeName;//nodeName的值是元素的标签名
+   }
+   ```
+
+   
+
+2. 节点关系
+
+   每个节点都有一个childNodes属性，其中一个保存着一个<u>NodeList对象</u>。
+
+   NodeList是一种类数组对象，用于保存一组有序的节点，可以通过位置来访问这些节点。
+
+   ```javascript
+   var firstChild = someNode.childNodes[0];
+   var secondChild = someNode.childeNodes.item(1);
+   var count = someNode.childeNodes.length;
+   ```
+
+   
+
+3. 操作节点
+
+4. 其他方法
 
