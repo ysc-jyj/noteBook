@@ -26,6 +26,8 @@ var birnatySeacher=function(arr,item){
 };
 ```
 
+![image-20201201134738369](algorithm.assets/image-20201201134738369.png)
+
 ## 选择排序
 
 O(n^2^)
@@ -49,8 +51,6 @@ var selectionSort=function(arr){
 };
 ```
 
-![image-20201201134738369](算法.assets/image-20201201134738369.png)
-
 ### 反转链表
 
 1. 双指针迭代
@@ -61,7 +61,7 @@ var selectionSort=function(arr){
 
    每次迭代到cur，都将cur的next指向pre,然后pre和cur都前进一位，当迭代完了（cur变为null）,pre就是最后一个节点了
 
-   ![迭代.gif](算法.assets/7d8712af4fbb870537607b1dd95d66c248eb178db4319919c32d9304ee85b602-迭代.gif)
+   ![7d8712af4fbb870537607b1dd95d66c248eb178db4319919c32d9304ee85b602-迭代](algorithm.assets/7d8712af4fbb870537607b1dd95d66c248eb178db4319919c32d9304ee85b602-迭代.gif)
 
    ```java
    public ListNode reverseList(ListNode head){
