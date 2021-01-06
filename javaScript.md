@@ -1,4 +1,9 @@
 # javaScript
+
+脚本语言
+
+解释性、嵌套在HTML中、弱数据类型、跨平台、基于对象、基于事件驱动
+
 ## 基础
 
 ### 样式
@@ -25,78 +30,104 @@ test.html
 <script src="a.js"></script>
 ```
 
+行内
+
+```html
+<a href="javascript:alert('你好');"></a>
+```
+
+
 
 ###数据类型
 
->==变量==
->
->var
->
->let
->
->==number==
->
->js不区分小数和整数，Number
->
->```javascript
->123//整数
->123.1//浮点数
->1.123e3//科学计数法
->-99//负数
->NaN//not a number
->Infinity//表示无限大
->```
->
->==字符串==
->
->‘abc’ ,"abc","\n"
->
->==布尔值==
->
->true,false
->
->==逻辑运算==
->
->&&，||，！
->
->==比较运算符==
->
->```
->=//赋值
->==//等于（数值一样，类型可以不一样 返回true）
->===//绝对等于（数值、类型都一样返回true）
->```
->
->须知：
->
->- NaN与所有数值包括自己都不相等
->
->==null和undefined==
->
->- null表示空
->- undefined
->
->==数组==
->
->不需要类型相同,数组越界undefined
->
->```javascript
->var arr=[1,2,3,'hello']
->```
->
->==对象==
->
->数组中括号，对象大括号,属性逗号隔开
->
->```javascript
->var person={
->   name:'xx',
->   age:18
->}
->```
->
->- 严格模式“use strict”预防javascript随意性而产生的问题，script标签首行
->- typeof 获取数据类型
+==变量==
+var
+let
+
+==Number==
+js不区分小数和整数，Number
+
+```javascript
+123//整数
+123.1//浮点数
+1.123e3//科学计数法
+-99//负数
+NaN//not a number
+Infinity//表示无限大
+isNaN(n)
+```
+
+
+
+==字符串String==
+‘abc’ ,"abc","\n"
+
+==布尔值Boolean==
+
+true,false
+
+除0以外都为true
+
+除“ ”之外的字符，都为true
+
+null和undefined返回false
+
+==逻辑运算==
+&&，||，！
+
+==算术运算符==
+
+a++先取a的值，然后执行+1
+
+++a先执行+1,再取a的值
+
+- document.write()向页面写入信息
+
+==比较运算符==
+
+```
+==//赋值
+==//等于（数值一样，类型可以不一样 返回true）支持自动转换
+===//绝对等于（数值、类型都一样返回true）
+```
+
+须知：
+
+- NaN与所有数值包括自己都不相等
+
+==null和undefined==
+
+- null表示空
+- undefined==null返回true
+
+==数组Array==
+
+不需要类型相同,数组越界undefined
+
+```javascript
+var arr=[1,2,3,'hello']
+```
+
+==Function==
+
+
+
+==对象Object==
+
+数组中括号，对象大括号,属性逗号隔开
+
+```javascript
+var person={
+  name:'xx',
+  age:18
+}
+```
+
+- 严格模式“use strict”预防javascript随意性而产生的问题，script标签首行
+
+- typeof 获取数据类型
+
+  
 
 ##流程控制
 
@@ -117,9 +148,40 @@ age.forEach(function(value){
 
 for in循环
 
+```html
+<script type="text/javascript">
+	for(i in 'adasdasd'){
+        console.log(i);;
+    }
+    var x='sdsdsa';
+    for(i in x){
+        console.log(x.charAt(i));
+    }
+</script>
+```
+
+
+
 for(var index in Object){}
 
 ## 函数
+
+###预定义函数
+
+javascript引擎中预先定义的
+
+- parseInt()字符串转整型
+
+- parseFloat()字符串转浮点型
+
+- isNaN() 
+
+  是返回false，不是返回true
+
+-  isFinite() 是否无穷,是false，不是true
+- escape()字符串转Unicode码
+- unescape()解码
+- 对话框alert()、prompt()、confirm()
 
 ### 自定义函数
 
@@ -370,7 +432,6 @@ b.constructor==Stirng//返回true
 | setXxx()      | 设置日期对象的年月日等信息   |
 
 ````html
-<!DOCTYPE html>
 <html>
 	<head>
 		<meta charset="utf-8" />
@@ -499,7 +560,31 @@ b.constructor==Stirng//返回true
 </script>
 ```
 
+## BOM与DOM
 
+### BOM模型
+
+定义了JavaScript操作的接口,提供了与浏览器窗口交互的功能，例如获取浏览器大小、版本信息、浏览历史记录等
+
+用于描述浏览器中对象与对象之间层次关系的模型，提供了独立于页面内容、并能够与浏览器窗口进行交互的对象结构
+
+![image-20210106202519900](javaScript.assets/image-20210106202519900.png)
+
+浏览器会为每一页自动创建window、document、location、nacigator、history对象
+
+- window对象是BOM模型中的最高一层，通过window对象的属性和方法来实现对浏览器窗口的操作
+- document是BOM的核心对象，提供访问HTML文档对象的属性、方法以及事件处理
+- location对象包含当前页面的URL地址，如协议名、主机名、端口号和路径等信息
+- navigator对象包含与浏览器相关的信息，如浏览器类型、版本等
+- history对象包含浏览器的历史访问记录,如访问过的URL、浏览数量等信息
+
+### DOM模型
+
+DOM（文档对象模型）是属于BOM的一部分，用于对BOM中的核心对象document进行操作
+
+DOM是一种与平台、语言无关的接口，允许程序和脚本动态的访问和更新HTML或XML文档的内容、结构和样式，且提供一系列的函数和对象来实现访问、添加、修改及删除操作
+
+![image-20210106205736966](javaScript.assets/image-20210106205736966.png)
 
 浏览器的全局对象是window
 
@@ -511,9 +596,50 @@ doucment.write()将内容写入页面
 
 页面中的元素就是document里的成员
 
-## DOM
+### 事件
 
-### 节点层次
+**操作事件**：用户在浏览器中操作所产生的事件（鼠标事件、键盘事件、表单事件）
+
+**文档事件**：文档本身所产生的事件，如文件加载完毕，卸载文档和窗口改变等事件
+
+```html
+<!--HTML元素的属性绑定-->
+<input type='button' onclick='doSomething()' id='muButton'/>
+<script type='text/javascript'>
+	function doSomething(){
+        alert("Hello")
+    }
+</script>
+<script type='text/javascript'>
+	//javasript脚本动态绑定
+    var myButton=document.getElementById('muButton');
+    myButton.onmouseover=function(){
+        alert('')
+    }
+</script>
+```
+
+### window对象
+
+setTimeout()、clearTimeout()、setInterval()、clearInterval()
+
+### document对象方法
+
+| 方法                     | 描述                                                       |
+| :----------------------- | ---------------------------------------------------------- |
+| write()                  | 向文档写入HTML或javaScript代码                             |
+| writeln()                | 比write（）多一个换行                                      |
+| getElementById()         | 返回指定ID的对象                                           |
+| getElementsByName()      | 返回指定名称对象集合                                       |
+| getElementsByTagName()   | 返回带有指定标签名的对象的集合                             |
+| getElementsByClassName() | 返回带有指定class属性的对象集合，该方法属于HTML5 DOM       |
+| querySelector()          | 返回满足条件的单个元素；当满足条件有多个时只返回第一个元素 |
+| querySelectorAll()       | 返回满足条件的元素集合                                     |
+
+
+
+###DOM节点
+
 
 DOM可以将任何HTML或XML文档描绘成一个有多节点构成的结构。
 
